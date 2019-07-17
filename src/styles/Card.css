@@ -1,17 +1,20 @@
+.card-area {
+    margin-top: -80px
+}
+
 .card {
     margin: 15px;
     height: 100px;
     width: 90px;
     transition: transform 1s ease;
     transform-style: preserve-3d;
-    transform: skewY(-5deg);
+    transform: skewY(-3deg);
     position: relative;
-    top: -80px;
     z-index: 2;
 }
 
 .clicked {
-    transform: rotateX(180deg) rotateZ(5deg);
+    transform: rotateX(180deg) rotateZ(3deg);
 }
 
 .card__face {
@@ -41,8 +44,8 @@
     height: 100px;
     width: 90px;
     position: relative;
-    transform: rotateX(180deg) rotateZ(5deg);
-    top: -93px;
+    transform: rotateX(180deg) rotateZ(3deg);
+    top: -10px;
     left: 22px;
     box-shadow: inset -1px 0px 14px 2px #9d1d1d;
     border-radius: 5px;
