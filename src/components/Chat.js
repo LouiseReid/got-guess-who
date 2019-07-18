@@ -5,7 +5,7 @@ const Chat = () => {
 
     return (
         <div id="chat__container">
-
+            Chat container
         </div>
     )
 

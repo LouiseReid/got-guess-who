@@ -7,10 +7,7 @@ const LoginForm = ({ socket, setUserFromLogin }) => {
     const [nickName, setnickName] = useState("")
     const [error, setError] = useState(null)
 
-
     const setUser = ({ user, isUser }) => {
-        console.log(user, isUser);
-
         if (isUser) {
             setError("Username taken")
         } else {

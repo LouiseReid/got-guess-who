@@ -13,3 +13,7 @@
 #user-list__container span {
     text-decoration: underline
 }
+
+.welcome-message {
+    margin-bottom: 10px
+}
