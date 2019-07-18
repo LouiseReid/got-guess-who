@@ -7,5 +7,9 @@
 #user-list__container>h2,
 #user-list__container span {
     text-align: center;
-    display: block
+    display: block;
+}
+
+#user-list__container span {
+    text-decoration: underline
 }
