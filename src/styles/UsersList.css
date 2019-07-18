@@ -1,0 +1,11 @@
+#user-list__container {
+    width: 15vw;
+    height: 100vh;
+    padding-top: 10px;
+}
+
+#user-list__container>h2,
+#user-list__container span {
+    text-align: center;
+    display: block
+}

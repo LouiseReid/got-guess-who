@@ -1,0 +1,14 @@
+import React from 'react'
+import '../styles/Chat.css'
+
+const Chat = () => {
+
+    return (
+        <div id="chat__container">
+
+        </div>
+    )
+
+}
+
+export default Chat

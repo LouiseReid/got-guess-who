@@ -1,12 +1,25 @@
+#board__container {
+    width: 70vw
+}
+
 #board {
     margin: 0 auto;
     margin-top: 80px;
-    height: 650px;
-    width: 1000px;
+    height: 80%;
+    width: 98%;
     background-color: #ff5d3e;
     border-radius: 4px;
+    box-shadow: -5px 2px 6px 1px #9d1d1d;
+}
+
+#card-container {
+    height: 90%;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    box-shadow: -5px 2px 6px 1px #9d1d1d;
+}
+
+#players-card {
+    margin: 0 auto;
+    transform: scale(1.3)
 }

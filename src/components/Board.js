@@ -1,3 +1,4 @@
+import shuffle from "lodash.shuffle";
 import React from 'react';
 import arya from '../cards/arya.png';
 import bran from '../cards/bran.png';
@@ -31,20 +32,24 @@ const Board = () => {
 
     const characters = [arya, bran, brienne, bronn, cersei, daenerys, davos, hodor, hound, jaime, joffrey, jon, jorah, littlefinger, margaery, melisandre, sam, sansa, shae, stannis, theon, tyrion, tywin, varys]
 
-
-
-    // const mockArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
-
-
     const cards = characters.map((character, index) => {
         return (
             <Card key={index} character={character} />
         )
     })
 
+    const playersCard = shuffle(characters)[0]
+
     return (
-        <div id="board">
-            {cards}
+        <div id="board__container">
+            <div id="board">
+                <div id="card-container">
+                    {cards}
+                </div>
+                <div className="card" id="players-card">
+                    <img src={playersCard} alt="players_card" className="card__face card__face--front" />
+                </div>
+            </div>
         </div>
     )
 
