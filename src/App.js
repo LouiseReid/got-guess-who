@@ -51,7 +51,7 @@ function App() {
             :
             <h2 className="welcome-message">Welcome {user.name}</h2>
         }
-        <UsersList socket={socket} loggedInUsers={loggedInUsers} />
+        <UsersList user={user} loggedInUsers={loggedInUsers} />
       </div>
       <Board />
       {

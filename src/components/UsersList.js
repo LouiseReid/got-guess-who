@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { USER_CONNECTED, LOGOUT } from '../Events';
+import React from 'react';
 import '../styles/UsersList.css';
+import UserCard from './UserCard';
 
-const UsersList = ({ socket, loggedInUsers }) => {
+const UsersList = ({ user, loggedInUsers }) => {
+
 
 
     return (
@@ -10,7 +11,16 @@ const UsersList = ({ socket, loggedInUsers }) => {
             <h2 className="header--medium">Players Online</h2>
             <span>Select a player to play with</span>
             <div id="user-list">
-
+                {
+                    user ?
+                        loggedInUsers.filter(usr => usr.id !== user.id).map(usr => (
+                            <UserCard key={usr.id} user={usr} />
+                        ))
+                        :
+                        loggedInUsers.map(usr => (
+                            <UserCard key={usr.id} user={usr} />
+                        ))
+                }
             </div>
         </div>
     )
