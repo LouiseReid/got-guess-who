@@ -11,8 +11,8 @@ const LoginForm = ({ socket, setUserFromLogin }) => {
         if (isUser) {
             setError("Username taken")
         } else {
-            setUserFromLogin(user)
             setError(null)
+            setUserFromLogin(user)
         }
     }
 

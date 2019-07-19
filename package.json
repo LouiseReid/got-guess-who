@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "lodash.shuffle": "^4.2.0",
+    "lodash.values": "^4.3.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-icons": "^3.7.0",
     "react-scripts": "3.0.1",
     "socket.io": "^2.2.0",
     "uuid": "^3.3.2"

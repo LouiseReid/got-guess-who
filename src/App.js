@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import LoginForm from './components/LoginForm';
 import Board from './components/Board';
 import Chat from './components/Chat';
 import UsersList from './components/UsersList'
 import './App.css'
 import io from 'socket.io-client';
 import { USER_CONNECTED, LOGOUT } from './Events'
+import values from "lodash.values";
 
 const socketURL = "http://localhost:3001/"
 function App() {
 
   const [socket, setSocket] = useState(null)
-  const [loggedInUser, setLoggedInUser] = useState(null)
+  const [loggedInUsers, setLoggedInUsers] = useState([])
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     initSocket()
@@ -21,26 +24,39 @@ function App() {
     socket.on('connect', () => {
       console.log('connected');
 
-      socket.on(USER_CONNECTED, (user) => {
-        setLoggedInUser(user)
+      socket.on(USER_CONNECTED, (users) => {
+        setLoggedInUsers(values(users))
       })
 
     })
     setSocket(socket)
   }
 
+  const setUserFromLogin = (user) => {
+    socket.emit(USER_CONNECTED, user)
+    setUser(user)
+  }
+
   const logout = () => {
     socket.emit(LOGOUT)
-    setLoggedInUser(null)
+    setUser(null)
   }
 
   return (
     <div id="app">
-      <UsersList socket={socket} />
+      <div id="users_container">
+        {
+          !user ?
+            <LoginForm socket={socket} setUserFromLogin={setUserFromLogin} />
+            :
+            <h2 className="welcome-message">Welcome {user.name}</h2>
+        }
+        <UsersList socket={socket} loggedInUsers={loggedInUsers} />
+      </div>
       <Board />
       {
-        loggedInUser ?
-          <Chat socket={socket} user={loggedInUser} logout={logout} />
+        user ?
+          <Chat socket={socket} user={user} logout={logout} />
           : null
       }
     </div>

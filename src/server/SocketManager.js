@@ -5,7 +5,6 @@ const { createUser, createMessage, createChat } = require('../Factories')
 let connectedUsers = {}
 
 module.exports = (socket) => {
-    console.log('socket id', socket.id);
 
     //verify username
     socket.on(VERIFY_USER, (nickname, callback) => {
@@ -22,8 +21,6 @@ module.exports = (socket) => {
         socket.user = user
 
         io.emit(USER_CONNECTED, connectedUsers)
-        console.log('connectedUsers', connectedUsers);
-
     })
 
 }
