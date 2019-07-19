@@ -1,0 +1,36 @@
+.user-card {
+    display: inline-block;
+    width: 100%;
+    margin: 2px;
+    padding: 8px;
+    position: relative;
+}
+
+.user-card:hover {
+    color: #161414;
+    background-color: #d5d0c4b9;
+    border-radius: 2px;
+}
+
+.user-card__name {
+    float: left;
+}
+
+.user-card__user-available,
+.user-card__user-unavailable {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translateY(-50%);
+}
+
+.user-card__user-available {
+    background-color: #008000;
+}
+
+.user-card__user-unavailable {
+    background-color: #ff0000;
+}

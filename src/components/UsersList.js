@@ -4,12 +4,15 @@ import UserCard from './UserCard';
 
 const UsersList = ({ user, loggedInUsers }) => {
 
-
-
     return (
         <div id="user-list__container">
             <h2 className="header--medium">Players Online</h2>
-            <span>Select a player to play with</span>
+            {
+                user ?
+                    <span>Select a player to play with</span>
+                    :
+                    null
+            }
             <div id="user-list">
                 {
                     user ?
