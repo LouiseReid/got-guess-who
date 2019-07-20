@@ -5,7 +5,7 @@ import Chat from './components/Chat';
 import UsersList from './components/UsersList'
 import './App.css'
 import io from 'socket.io-client';
-import { USER_CONNECTED, LOGOUT } from './Events'
+import { USER_CONNECTED, LOGOUT, PRIVATE_MESSAGE } from './Events'
 import values from "lodash.values";
 
 const socketURL = "http://localhost:3001/"
@@ -37,6 +37,12 @@ function App() {
     setUser(user)
   }
 
+  const sendPrivateChat = (reciever) => {
+    console.log(reciever);
+
+    socket.emit(PRIVATE_MESSAGE, { reciever, sender: user.name })
+  }
+
   const logout = () => {
     socket.emit(LOGOUT)
     setUser(null)
@@ -51,7 +57,7 @@ function App() {
             :
             <h2 className="welcome-message">Welcome {user.name}</h2>
         }
-        <UsersList user={user} loggedInUsers={loggedInUsers} />
+        <UsersList user={user} loggedInUsers={loggedInUsers} sendPrivateChat={sendPrivateChat} />
       </div>
       <Board />
       {

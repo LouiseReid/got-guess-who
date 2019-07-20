@@ -2,7 +2,13 @@ import React from 'react';
 import '../styles/UsersList.css';
 import UserCard from './UserCard';
 
-const UsersList = ({ user, loggedInUsers }) => {
+const UsersList = ({ user, loggedInUsers, sendPrivateChat }) => {
+
+    const openChatWithUser = (reciever) => {
+        if (user) {
+            sendPrivateChat(reciever)
+        }
+    }
 
     return (
         <div id="user-list__container">
@@ -17,11 +23,11 @@ const UsersList = ({ user, loggedInUsers }) => {
                 {
                     user ?
                         loggedInUsers.filter(usr => usr.id !== user.id).map(usr => (
-                            <UserCard key={usr.id} user={usr} />
+                            <UserCard key={usr.id} user={usr} openChat={openChatWithUser} />
                         ))
                         :
                         loggedInUsers.map(usr => (
-                            <UserCard key={usr.id} user={usr} />
+                            <UserCard key={usr.id} user={usr} openChat={openChatWithUser} />
                         ))
                 }
             </div>
