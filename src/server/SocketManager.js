@@ -1,5 +1,5 @@
 const io = require('./index').io
-const { VERIFY_USER, USER_CONNECTED, LOGOUT, PRIVATE_MESSAGE } = require('../Events')
+const { VERIFY_USER, USER_CONNECTED, LOGOUT, PRIVATE_MESSAGE, GET_CONNECTED } = require('../Events')
 const { createUser, createMessage, createChat } = require('../Factories')
 
 let connectedUsers = {}
@@ -13,6 +13,10 @@ module.exports = (socket) => {
         } else {
             callback({ isUser: false, user: createUser({ name: nickname, socketId: socket.id }) })
         }
+    })
+
+    socket.on(GET_CONNECTED, () => {
+        socket.emit(GET_CONNECTED, connectedUsers)
     })
 
     //user connects with username

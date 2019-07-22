@@ -40,6 +40,7 @@ const Board = () => {
 
     const playersCard = shuffle(characters)[0]
 
+
     return (
         <div id="board__container">
             <div id="board">
