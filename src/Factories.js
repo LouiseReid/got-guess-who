@@ -22,8 +22,7 @@ const createChat = ({ messages = [], name = "", users = [] } = {}) => (
         id: uuid4(),
         name,
         messages,
-        users,
-        typingUsers: []
+        users
     }
 )
 

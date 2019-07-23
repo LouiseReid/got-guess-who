@@ -1,0 +1,28 @@
+#message-input {
+    position: absolute;
+    bottom: 10px;
+    width: 15vw;
+}
+
+#message-form {
+    display: flex;
+    flex-direction: column
+}
+
+input[type="text"] {
+    padding: 10px 0;
+}
+
+button[type="submit"] {
+    margin: 10px auto;
+    width: fit-content;
+    padding: 10px;
+    color: #000000;
+    border: 2px solid green;
+    background-color: #4e5052
+}
+
+button:disabled {
+    border: 2px inset red;
+    background-color: #4e5052
+}
