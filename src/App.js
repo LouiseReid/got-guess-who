@@ -14,7 +14,7 @@ function App() {
   const [socket, setSocket] = useState(null)
   const [loggedInUsers, setLoggedInUsers] = useState([])
   const [user, setUser] = useState(null)
-  const [receiver, setReceiver] = useState(null)
+  const [chat, setChat] = useState(null)
   const [inChat, setInChat] = useState(false)
 
   useEffect(() => {
@@ -35,8 +35,8 @@ function App() {
       })
 
       socket.on(PRIVATE_MESSAGE, (chat) => {
-        console.log(chat);
-
+        setChat(chat)
+        setInChat(true)
       })
     })
 
@@ -51,7 +51,7 @@ function App() {
   }
 
   const setRecieverFromList = (receiver) => {
-    setReceiver(receiver)
+    setInChat(true)
     socket.emit(CONNECTION_CREATED, { receiver, sender: user })
   }
 
@@ -72,7 +72,7 @@ function App() {
       <Board />
       {
         user && inChat ?
-          <Chat socket={socket} />
+          <Chat socket={socket} chat={chat} user={user} />
           : null
       }
     </div>

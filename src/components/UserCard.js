@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/UserCard.css'
 
 const UserCard = ({ user, openChat }) => {
 
-    const [active, setActive] = useState(true)
-
-    const userStatus = active ? 'available' : 'unavailable'
+    const userStatus = user.inChat ? 'unavailable' : 'available'
 
     return (
         <div className="user-card" onClick={() => openChat(user)}>
