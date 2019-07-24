@@ -5,7 +5,7 @@ import '../styles/Card.css';
 const Card = ({ character }) => {
     const [cardClicked, setCardClicked] = useState(false)
 
-    const cardState = cardClicked ? 'clicked' : null
+    let cardState = cardClicked ? 'clicked' : null
 
     const toggleCard = () => setCardClicked(!cardClicked)
 

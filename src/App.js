@@ -8,7 +8,7 @@ import io from 'socket.io-client';
 import { USER_CONNECTED, PRIVATE_MESSAGE, CONNECTION_CREATED } from './Events'
 import values from "lodash.values";
 
-const socketURL = "http://172.19.63.158:3001/"
+const socketURL = "http://localhost:3001/"
 function App() {
 
   const [socket, setSocket] = useState(null)
@@ -33,7 +33,7 @@ function App() {
 
       socket.on(PRIVATE_MESSAGE, (data) => {
         setLoggedInUsers(data.connectedUsers)
-        setChat(data.chat)
+        setChat(data.newChat)
         setInChat(true)
       })
     })
