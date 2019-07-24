@@ -31,7 +31,7 @@ const Chat = ({ socket, chat, user }) => {
     return (
         <div id="chat__container">
             {chat ? <h1>{chat.name}</h1> : null}
-            <MessageContainer messages={messages} />
+            <MessageContainer messages={messages} user={user} />
             <MessageInput sendMessage={sendMessage} />
         </div>
     )

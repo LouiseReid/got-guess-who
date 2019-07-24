@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import Message from './Message';
 import '../styles/MessageContainer.css'
 
+const MessageContainer = ({ messages, user }) => {
 
-const MessageContainer = ({ messages }) => {
+    const messageEndRef = useRef(null)
+
+    useEffect(() => {
+        scrollToBottom()
+    }, [messages])
+
+    const scrollToBottom = () => {
+        messageEndRef.current.scrollIntoView({ bahaviour: 'smooth' })
+    }
 
     return (
         <div id="message-container">
             {
                 messages.map(message => (
-                    <li key={message.id}>{message.message}</li>
+                    <Message key={message.id} message={message} user={user} />
                 ))
             }
+            <div ref={messageEndRef}></div>
         </div>
 
     )

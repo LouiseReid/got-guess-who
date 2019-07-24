@@ -1,0 +1,11 @@
+.message {
+    padding: 20px 0;
+}
+
+.message.sender {
+    align-self: flex-end;
+}
+
+.message.receiver {
+    align-self: flex-start
+}
