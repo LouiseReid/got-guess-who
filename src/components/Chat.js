@@ -12,6 +12,10 @@ const Chat = ({ socket, chat, user }) => {
         socket.on(MESSAGE_RECEIVED, (message) => {
             addMessage(message)
         })
+
+        return (() => {
+            socket.removeAllListeners(MESSAGE_RECEIVED)
+        })
         // eslint-disable-next-line
     }, [messages])
 

@@ -5,7 +5,7 @@ import Chat from './components/Chat';
 import UsersList from './components/UsersList'
 import './App.css'
 import io from 'socket.io-client';
-import { USER_CONNECTED, PRIVATE_MESSAGE, GET_CONNECTED, CONNECTION_CREATED } from './Events'
+import { USER_CONNECTED, PRIVATE_MESSAGE, CONNECTION_CREATED } from './Events'
 import values from "lodash.values";
 
 const socketURL = "http://localhost:3001/"
@@ -25,10 +25,7 @@ function App() {
   const initSocket = () => {
     const socket = io(socketURL)
     socket.on('connect', () => {
-
-      socket.on(GET_CONNECTED, (users) => {
-        setLoggedInUsers(values(users))
-      })
+      console.log('connected');
 
       socket.on(USER_CONNECTED, (users) => {
         setLoggedInUsers(values(users))
@@ -42,8 +39,6 @@ function App() {
 
     setSocket(socket)
   }
-
-
 
   const setUserFromLogin = (user) => {
     socket.emit(USER_CONNECTED, user)

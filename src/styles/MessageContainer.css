@@ -1,0 +1,10 @@
+#message-container {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 50vh
+}
+
+li {
+    font-size: 30px
+}

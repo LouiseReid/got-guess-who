@@ -1,13 +1,14 @@
 import React from 'react';
+import '../styles/MessageContainer.css'
 
 
 const MessageContainer = ({ messages }) => {
 
     return (
-        <div>
+        <div id="message-container">
             {
                 messages.map(message => (
-                    <li>{message.message}</li>
+                    <li key={message.id}>{message.message}</li>
                 ))
             }
         </div>
