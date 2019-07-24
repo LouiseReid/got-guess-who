@@ -6,7 +6,7 @@
     position: relative;
 }
 
-.user-card:hover {
+.user-card.available:hover {
     color: #161414;
     background-color: #d5d0c4b9;
     border-radius: 2px;

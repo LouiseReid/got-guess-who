@@ -27,9 +27,10 @@ module.exports = (socket) => {
     socket.on(CONNECTION_CREATED, (connection) => {
         const { sender, receiver } = connection
         const newChat = createChat({ name: `${sender.name} & ${receiver.name}`, users: [sender, receiver] })
+        connectedUsers = newChat.users
         const receiverSocket = receiver.socketId
-        socket.to(receiverSocket).emit(PRIVATE_MESSAGE, newChat)
-        socket.emit(PRIVATE_MESSAGE, newChat)
+        socket.to(receiverSocket).emit(PRIVATE_MESSAGE, { newChat, connectedUsers })
+        socket.emit(PRIVATE_MESSAGE, { newChat, connectedUsers })
     })
 
     socket.on(MESSAGE_SENT, ({ chat, message, user }) => {

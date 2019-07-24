@@ -5,7 +5,7 @@ import UserCard from './UserCard';
 const UsersList = ({ user, loggedInUsers, sendPrivateChat }) => {
 
     const openChatWithUser = (reciever) => {
-        if (user) {
+        if (!reciever.inChat) {
             sendPrivateChat(reciever)
         }
     }
@@ -26,9 +26,7 @@ const UsersList = ({ user, loggedInUsers, sendPrivateChat }) => {
                             <UserCard key={usr.id} user={usr} openChat={openChatWithUser} />
                         ))
                         :
-                        loggedInUsers.map(usr => (
-                            <UserCard key={usr.id} user={usr} openChat={openChatWithUser} />
-                        ))
+                        null
                 }
             </div>
         </div>

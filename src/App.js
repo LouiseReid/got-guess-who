@@ -31,8 +31,9 @@ function App() {
         setLoggedInUsers(values(users))
       })
 
-      socket.on(PRIVATE_MESSAGE, (chat) => {
-        setChat(chat)
+      socket.on(PRIVATE_MESSAGE, (data) => {
+        setLoggedInUsers(data.connectedUsers)
+        setChat(data.chat)
         setInChat(true)
       })
     })

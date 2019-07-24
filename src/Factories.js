@@ -18,14 +18,16 @@ const createMessage = ({ message, user } = {}) => (
     }
 )
 
-const createChat = ({ messages = [], name = "", users = [] } = {}) => (
-    {
+const createChat = ({ messages = [], name = "", users = [] } = {}) => {
+    users.forEach(user => user.inChat = true)
+    return {
         id: uuid4(),
         name,
         messages,
         users
     }
-)
+}
+
 
 const getTime = (date) => {
     return `${date.getHours()}:${("0" + date.getMinutes()).slice(-2)}`
