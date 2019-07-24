@@ -4,3 +4,7 @@
     display: flex;
     flex-direction: column;
 }
+
+#dummy-div {
+    margin-top: 10px
+}

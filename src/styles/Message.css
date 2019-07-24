@@ -1,11 +1,16 @@
 .message {
-    padding: 20px 0;
+    margin: 2px;
+    padding: 10px;
+    color: black;
+    border-radius: 2px
 }
 
 .message.sender {
     align-self: flex-end;
+    background-color: #95d3be
 }
 
 .message.receiver {
-    align-self: flex-start
+    align-self: flex-start;
+    background-color: #a17bc5
 }

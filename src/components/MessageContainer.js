@@ -21,7 +21,7 @@ const MessageContainer = ({ messages, user }) => {
                     <Message key={message.id} message={message} user={user} />
                 ))
             }
-            <div ref={messageEndRef}></div>
+            <div ref={messageEndRef} id="dummy-div"></div>
         </div>
 
     )
