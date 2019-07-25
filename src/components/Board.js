@@ -1,5 +1,5 @@
 import shuffle from "lodash.shuffle";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import arya from '../cards/arya.png';
 import bran from '../cards/bran.png';
 import brienne from '../cards/brienne.png';
@@ -30,13 +30,12 @@ import Card from './Card';
 
 const Board = () => {
 
-    const [reset, setReset] = useState(false)
 
     const characters = [arya, bran, brienne, bronn, cersei, daenerys, davos, hodor, hound, jaime, joffrey, jon, jorah, littlefinger, margaery, melisandre, sam, sansa, shae, stannis, theon, tyrion, tywin, varys]
 
     const cards = characters.map((character, index) => {
         return (
-            <Card key={index} character={character} reset={reset} />
+            <Card key={index} character={character} />
         )
     })
 
@@ -53,7 +52,6 @@ const Board = () => {
                     <img src={playersCard} alt="players_card" className="card__face card__face--front" />
                 </div>
             </div>
-            <button onClick={() => setReset(!reset)}>Play Again?</button>
         </div>
     )
 

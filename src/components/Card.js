@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import '../styles/Card.css';
 
 
-const Card = ({ character }) => {
+const Card = ({ character, reset }) => {
     const [cardClicked, setCardClicked] = useState(false)
 
     let cardState = cardClicked ? 'clicked' : null
 
+    if (reset) cardState = null;
+
     const toggleCard = () => setCardClicked(!cardClicked)
+
 
     return (
         <div className="card-area">
