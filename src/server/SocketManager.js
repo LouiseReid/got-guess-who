@@ -1,5 +1,5 @@
 const io = require('./index').io
-const { VERIFY_USER, USER_CONNECTED, PRIVATE_MESSAGE, MESSAGE_RECEIVED, MESSAGE_SENT, CONNECTION_CREATED, USER_DISCONNECTED, OTHER_PLAYER_LEFT, USER_LEFT } = require('../Events')
+const { VERIFY_USER, USER_CONNECTED, PRIVATE_MESSAGE, MESSAGE_RECEIVED, MESSAGE_SENT, CONNECTION_CREATED, USER_DISCONNECTED, OTHER_PLAYER_LEFT, USER_LEFT, GET_USERS } = require('../Events')
 const { createUser, createMessage, createChat } = require('../Factories')
 
 let connectedUsers = {}
@@ -10,7 +10,6 @@ module.exports = (socket) => {
     socket.on('disconnect', () => {
         if ("user" in socket) {
             connectedUsers = removeUser(connectedUsers, socket.user.name)
-
             io.emit(USER_DISCONNECTED, connectedUsers)
         }
     })
@@ -30,8 +29,6 @@ module.exports = (socket) => {
         user.socketId = socket.id
         connectedUsers = addUser(connectedUsers, user)
         socket.user = user
-        console.log(connectedUsers);
-
         io.emit(USER_CONNECTED, connectedUsers)
     })
 
@@ -60,8 +57,9 @@ module.exports = (socket) => {
         const users = chat.users
         users.forEach(user => {
             if (user.id !== socket.user.id) {
-                socket.to(user.socketId).emit(OTHER_PLAYER_LEFT)
+                socket.to(user.socketId).emit(OTHER_PLAYER_LEFT, connectedUsers)
             }
+            socket.emit(GET_USERS, connectedUsers)
         })
     })
 }
