@@ -4,7 +4,7 @@ import MessageInput from './MessageInput';
 import { MESSAGE_SENT, MESSAGE_RECEIVED } from '../Events'
 import '../styles/Chat.css'
 
-const Chat = ({ socket, chat, user }) => {
+const Chat = ({ socket, chat, user, resetChat }) => {
 
     const [messages, setMessages] = useState([])
 
@@ -33,6 +33,7 @@ const Chat = ({ socket, chat, user }) => {
             {chat ? <h2 id="chat-header">{chat.name}</h2> : null}
             <MessageContainer messages={messages} user={user} />
             <MessageInput sendMessage={sendMessage} />
+            <button id="leave-game" onClick={() => resetChat()}>Leave Game</button>
         </div>
     )
 

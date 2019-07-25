@@ -1,5 +1,5 @@
 const io = require('./index').io
-const { VERIFY_USER, USER_CONNECTED, PRIVATE_MESSAGE, MESSAGE_RECEIVED, MESSAGE_SENT, CONNECTION_CREATED, USER_DISCONNECTED } = require('../Events')
+const { VERIFY_USER, USER_CONNECTED, PRIVATE_MESSAGE, MESSAGE_RECEIVED, MESSAGE_SENT, CONNECTION_CREATED, USER_DISCONNECTED, OTHER_PLAYER_LEFT, USER_LEFT } = require('../Events')
 const { createUser, createMessage, createChat } = require('../Factories')
 
 let connectedUsers = {}
@@ -54,7 +54,15 @@ module.exports = (socket) => {
                 socket.emit(MESSAGE_RECEIVED, newMessage)
             }
         });
+    })
 
+    socket.on(USER_LEFT, (chat) => {
+        const users = chat.users
+        users.forEach(user => {
+            if (user.id !== socket.user.id) {
+                socket.to(user.socketId).emit(OTHER_PLAYER_LEFT)
+            }
+        })
     })
 }
 

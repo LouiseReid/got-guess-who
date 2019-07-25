@@ -5,7 +5,7 @@ import Chat from './components/Chat';
 import UsersList from './components/UsersList'
 import './App.css'
 import io from 'socket.io-client';
-import { USER_CONNECTED, PRIVATE_MESSAGE, CONNECTION_CREATED, USER_DISCONNECTED } from './Events'
+import { USER_CONNECTED, PRIVATE_MESSAGE, CONNECTION_CREATED, USER_DISCONNECTED, OTHER_PLAYER_LEFT, USER_LEFT } from './Events'
 import values from "lodash.values";
 
 const socketURL = "http://localhost:3001/"
@@ -39,6 +39,12 @@ function App() {
         setChat(data.newChat)
         setInChat(true)
       })
+
+      socket.on(OTHER_PLAYER_LEFT, () => {
+        alert("Your oppenent has left the game")
+        setChat(null)
+        setInChat(false)
+      })
     })
 
     setSocket(socket)
@@ -52,6 +58,12 @@ function App() {
   const setRecieverFromList = (receiver) => {
     setInChat(true)
     socket.emit(CONNECTION_CREATED, { receiver, sender: user })
+  }
+
+  const resetChat = () => {
+    setInChat(false)
+    socket.emit(USER_LEFT, chat)
+    setChat(null)
   }
 
 
@@ -71,7 +83,7 @@ function App() {
       <Board />
       {
         user && inChat ?
-          <Chat socket={socket} chat={chat} user={user} />
+          <Chat socket={socket} chat={chat} user={user} resetChat={resetChat} />
           : null
       }
     </div>

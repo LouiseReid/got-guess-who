@@ -1,5 +1,5 @@
 import shuffle from "lodash.shuffle";
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import arya from '../cards/arya.png';
 import bran from '../cards/bran.png';
 import brienne from '../cards/brienne.png';

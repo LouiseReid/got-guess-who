@@ -8,3 +8,8 @@
     font-size: 20px;
     margin: 10px 0;
 }
+
+#leave-game {
+    position: absolute;
+    bottom: 5px;
+}
